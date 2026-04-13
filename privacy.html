@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Notice — QuietGood</title>
+  <meta name="description" content="QuietGood privacy notice. Learn how we handle your data with care and transparency.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #19b366;
+      --green-light: #e6f9ef;
+      --green-dark: #128a4e;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --text-tertiary: #94a3b8;
+      --bg: #f8faf9;
+      --bg-surface: #ffffff;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.022;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: var(--green-dark); text-decoration: underline; text-decoration-color: var(--green-light); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    a:hover { text-decoration-color: var(--green); }
+
+    /* ── Navigation ── */
+    .privacy-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 250, 249, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .privacy-nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--green); text-decoration: none; }
+    .nav-back svg { width: 18px; height: 18px; }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { text-decoration: none; }
+    .nav-brand img {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ── Content ── */
+    .privacy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .privacy-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .privacy-updated {
+      font-size: 0.88rem;
+      color: var(--text-tertiary);
+      margin-bottom: 48px;
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      margin-bottom: 8px;
+    }
+    .toc ol li a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+    }
+    .toc ol li a::before {
+      content: counter(toc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .toc ol li a:hover { color: var(--green); }
+
+    /* ── Sections ── */
+    .policy-section {
+      margin-bottom: 40px;
+    }
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-top: 8px;
+    }
+    .policy-section h2::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--green);
+      margin-top: 10px;
+      border-radius: 2px;
+    }
+    .policy-section p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+    .policy-section ul {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .policy-section ul li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+    .policy-section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Data Table ── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+    }
+    .data-table thead th {
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border);
+    }
+    .data-table tbody td {
+      padding: 12px 14px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-light);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .data-table tbody td:first-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ── Highlight Box ── */
+    .highlight-box {
+      background: var(--green-light);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .highlight-box p {
+      color: var(--green-dark);
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    /* ── Rights Grid ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .rights-grid .right-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+    }
+    .rights-grid .right-item strong {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+    .rights-grid .right-item span {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Contact Box ── */
+    .contact-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+    }
+    .contact-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .contact-box h2::after { display: none; }
+    .contact-box p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-email:hover { background: #d0f0e0; text-decoration: none; }
+
+    /* ── Footer ── */
+    .privacy-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .privacy-content { padding: 40px 20px 60px; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .data-table { font-size: 0.82rem; }
+      .data-table thead th, .data-table tbody td { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <div class="privacy-nav">
+    <div class="privacy-nav-inner">
+      <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Home
+      </a>
+      <a href="index.html" class="nav-brand">
+        <img src="../assets/icon.png" alt="QuietGood" width="28" height="28">
+        QuietGood
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="privacy-content">
+    <h1 class="privacy-title">Privacy Notice</h1>
+    <p class="privacy-updated">Last updated: 13 April 2026</p>
+
+    <!-- ── Table of Contents ── -->
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#who-we-are">Who we are</a></li>
+        <li><a href="#data-we-collect">What data we collect</a></li>
+        <li><a href="#data-we-dont-collect">What we do not collect</a></li>
+        <li><a href="#how-we-use">How we use your data</a></li>
+        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#data-retention">Data retention</a></li>
+        <li><a href="#data-security">Data security</a></li>
+        <li><a href="#your-rights">Your rights</a></li>
+        <li><a href="#legal-basis">Legal basis for processing</a></li>
+        <li><a href="#international">International data transfers</a></li>
+        <li><a href="#children">Children's privacy</a></li>
+        <li><a href="#california">California privacy rights (CCPA)</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- ── 1. Who We Are ── -->
+    <div class="policy-section" id="who-we-are">
+      <h2>1. Who we are</h2>
+      <p>QuietGood is an independent mobile application for daily gratitude journaling ("we," "us," or "our"). We are the data controller responsible for your personal data.</p>
+      <p>We believe your private reflections deserve the highest level of care and transparency. This notice explains exactly what we collect, why we collect it, and how we protect it.</p>
+      <p><strong>Contact:</strong> cheuk.coding@gmail.com</p>
+    </div>
+
+    <!-- ── 2. What Data We Collect ── -->
+    <div class="policy-section" id="data-we-collect">
+      <h2>2. What data we collect</h2>
+      <p>We collect only the minimum data required to provide the QuietGood service:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Purpose</th>
+            <th>Stored In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Authentication credentials</td>
+            <td>Sign-in via email, Apple ID, or Google</td>
+            <td>Firebase Auth</td>
+          </tr>
+          <tr>
+            <td>Gratitude entries</td>
+            <td>Your daily reflections (three items per entry)</td>
+            <td>Cloud Firestore</td>
+          </tr>
+          <tr>
+            <td>App preferences</td>
+            <td>Display name, reminder time, dark mode, notification settings</td>
+            <td>Cloud Firestore</td>
+          </tr>
+          <tr>
+            <td>Profile image</td>
+            <td>Optional avatar you choose from your photo library</td>
+            <td>Device only</td>
+          </tr>
+          <tr>
+            <td>Push notification token</td>
+            <td>To deliver daily reminders and morning reflections</td>
+            <td>Device only</td>
+          </tr>
+          <tr>
+            <td>Timezone</td>
+            <td>To schedule notifications at the correct local time</td>
+            <td>Device only</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ── 3. What We Don't Collect ── -->
+    <div class="policy-section" id="data-we-dont-collect">
+      <h2>3. What we do not collect</h2>
+      <div class="highlight-box">
+        <p>We do not collect your name, phone number, physical address, or any biometric data. We do not use analytics, tracking, profiling, or targeted advertising of any kind.</p>
+      </div>
+      <p>QuietGood contains no third-party analytics SDKs, no ad networks, and no data brokers. Your gratitude entries are never read, processed, or used for any purpose other than displaying them back to you.</p>
+    </div>
+
+    <!-- ── 4. How We Use Your Data ── -->
+    <div class="policy-section" id="how-we-use">
+      <h2>4. How we use your data</h2>
+      <ul>
+        <li><strong>Authentication:</strong> Firebase Authentication verifies your identity so your entries are accessible only to you.</li>
+        <li><strong>Cloud sync:</strong> Your entries and preferences are stored in Cloud Firestore so they persist across devices. All data is transmitted over TLS encryption.</li>
+        <li><strong>Notifications:</strong> If you enable daily reminders or morning reflections, we schedule local notifications on your device. No notification content is stored on our servers.</li>
+        <li><strong>Widget:</strong> If you use the home screen widget, entry data is stored locally on-device to populate the widget display.</li>
+      </ul>
+    </div>
+
+    <!-- ── 5. Third-Party Services ── -->
+    <div class="policy-section" id="third-party">
+      <h2>5. Third-party services</h2>
+      <p>QuietGood uses the following third-party services, each with their own privacy policies:</p>
+      <ul>
+        <li><strong>Firebase Authentication</strong> — for secure sign-in via email, Apple, and Google. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy docs</a></li>
+        <li><strong>Cloud Firestore</strong> — for storing your entries and preferences securely in the cloud. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy docs</a></li>
+        <li><strong>Apple Push Notification Service</strong> — for delivering notifications on iOS. <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Privacy docs</a></li>
+      </ul>
+      <p>We do not share your data with any other third parties.</p>
+    </div>
+
+    <!-- ── 6. Data Retention ── -->
+    <div class="policy-section" id="data-retention">
+      <h2>6. Data retention</h2>
+      <p>Your data is retained for as long as your account exists. When you delete your account through the app, all associated data — including entries, preferences, and authentication credentials — is permanently removed within 30 days.</p>
+    </div>
+
+    <!-- ── 7. Data Security ── -->
+    <div class="policy-section" id="data-security">
+      <h2>7. Data security</h2>
+      <p>We take the security of your data seriously:</p>
+      <ul>
+        <li><strong>In transit:</strong> All data transmitted between the app and our servers is encrypted using TLS (Transport Layer Security).</li>
+        <li><strong>At rest:</strong> Data stored in Cloud Firestore is encrypted using AES-256 encryption.</li>
+        <li><strong>Authentication:</strong> We use Firebase's secure authentication system with industry-standard protocols. Passwords are never stored in plain text.</li>
+        <li><strong>On device:</strong> Sensitive credentials are stored using the device's secure keychain (Expo SecureStore).</li>
+      </ul>
+    </div>
+
+    <!-- ── 8. Legal Basis for Processing ── -->
+    <div class="policy-section" id="legal-basis">
+      <h2>8. Legal basis for processing</h2>
+      <p>Under the General Data Protection Regulation (GDPR) and similar laws, we process your personal data on the following legal bases:</p>
+      <ul>
+        <li><strong>Contractual necessity (Art. 6(1)(b) GDPR):</strong> Processing your authentication credentials and gratitude entries is necessary to provide you with the QuietGood service.</li>
+        <li><strong>Consent (Art. 6(1)(a) GDPR):</strong> Where you have given consent, such as enabling push notifications or uploading a profile image. You may withdraw consent at any time through the app settings.</li>
+        <li><strong>Legitimate interest (Art. 6(1)(f) GDPR):</strong> We may process limited data to maintain the security and integrity of the service. Our legitimate interest does not override your rights and freedoms.</li>
+      </ul>
+    </div>
+
+    <!-- ── 9. International Data Transfers ── -->
+    <div class="policy-section" id="international">
+      <h2>9. International data transfers</h2>
+      <p>QuietGood uses Google Firebase services, which may process and store data in data centres located in the United States and other countries outside the European Economic Area (EEA).</p>
+      <p>Where your data is transferred outside the EEA, it is protected by Google's data processing terms, which include Standard Contractual Clauses (SCCs) approved by the European Commission to ensure an adequate level of data protection.</p>
+      <p>For more information on how Google handles international transfers, see <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener">Google's Data Processing Addendum</a>.</p>
+    </div>
+
+    <!-- ── 10. Your Rights ── -->
+    <div class="policy-section" id="your-rights">
+      <h2>10. Your rights</h2>
+      <p>You have the following rights regarding your personal data:</p>
+      <div class="rights-grid">
+        <div class="right-item">
+          <strong>Access</strong>
+          <span>Request a copy of your data</span>
+        </div>
+        <div class="right-item">
+          <strong>Rectification</strong>
+          <span>Correct inaccurate data</span>
+        </div>
+        <div class="right-item">
+          <strong>Erasure</strong>
+          <span>Delete your data permanently</span>
+        </div>
+        <div class="right-item">
+          <strong>Portability</strong>
+          <span>Receive your data in a portable format</span>
+        </div>
+        <div class="right-item">
+          <strong>Restriction</strong>
+          <span>Limit how your data is processed</span>
+        </div>
+        <div class="right-item">
+          <strong>Objection</strong>
+          <span>Object to specific processing</span>
+        </div>
+      </div>
+      <p>To exercise any of these rights, contact us at the email below. We will respond within 30 days.</p>
+      <p>You also have the <strong>right to lodge a complaint</strong> with a supervisory authority in your country of residence if you believe your data has been processed in violation of applicable data protection laws. A list of EU data protection authorities can be found at <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a>.</p>
+    </div>
+
+    <!-- ── 11. Children ── -->
+    <div class="policy-section" id="children">
+      <h2>11. Children's privacy</h2>
+      <p>QuietGood is not intended for children under 13 (or under 16 in certain jurisdictions). We do not knowingly collect personal data from children under this age. If you believe a child has provided us with personal data, please contact us and we will promptly delete it.</p>
+    </div>
+
+    <!-- ── 12. California Privacy Rights (CCPA) ── -->
+    <div class="policy-section" id="california">
+      <h2>12. California privacy rights (CCPA)</h2>
+      <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with additional rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Right to know:</strong> You have the right to request what personal information we have collected, used, or disclosed about you.</li>
+        <li><strong>Right to delete:</strong> You have the right to request deletion of your personal information, subject to certain exceptions.</li>
+        <li><strong>Right to non-discrimination:</strong> We will not discriminate against you for exercising your CCPA rights.</li>
+      </ul>
+      <div class="highlight-box">
+        <p>We do not sell your personal information. We do not share your personal information for cross-context behavioural advertising. We do not use or disclose sensitive personal information for purposes other than providing the service.</p>
+      </div>
+      <p>To exercise your rights, contact us at <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a>. We will verify your identity and respond within 45 days.</p>
+    </div>
+
+    <!-- ── 13. Changes ── -->
+    <div class="policy-section" id="changes">
+      <h2>13. Changes to this policy</h2>
+      <p>We may update this privacy notice from time to time. When we make changes, we will update the "Last updated" date at the top of this page. For significant changes, we may also notify you through the app. The latest version will always be available at this URL.</p>
+    </div>
+
+    <!-- ── 14. Contact ── -->
+    <div class="policy-section contact-box" id="contact">
+      <h2>Contact</h2>
+      <p>If you have questions or concerns about this privacy notice or how your data is handled, we'd love to hear from you.</p>
+      <a href="mailto:cheuk.coding@gmail.com" class="contact-email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cheuk.coding@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="privacy-footer">
+    &copy; 2026 QuietGood. Made with quiet intention.
+  </div>
+
+</body>
+</html>

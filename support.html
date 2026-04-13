@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — QuietGood</title>
+  <meta name="description" content="Get help with QuietGood. Find answers to common questions or contact us directly.">
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <link rel="apple-touch-icon" href="../assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #19b366;
+      --green-light: #e6f9ef;
+      --green-dark: #128a4e;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --text-tertiary: #94a3b8;
+      --bg: #f8faf9;
+      --bg-surface: #ffffff;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.022;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: var(--green-dark); text-decoration: underline; text-decoration-color: var(--green-light); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    a:hover { text-decoration-color: var(--green); }
+
+    /* Navigation */
+    .privacy-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248, 250, 249, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .privacy-nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--green); text-decoration: none; }
+    .nav-back svg { width: 18px; height: 18px; }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { text-decoration: none; }
+    .nav-brand img {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* Content */
+    .support-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .support-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .support-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-bottom: 48px;
+    }
+    .faq-section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--green-dark); }
+    .faq-question svg {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      color: var(--text-tertiary);
+      transition: transform 0.3s ease;
+    }
+    .faq-item.open .faq-question svg {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .contact-section > p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-email:hover { background: #d0f0e0; text-decoration: none; }
+    .contact-note {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    .privacy-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    @media (max-width: 640px) {
+      .support-content { padding: 40px 20px 60px; }
+      .faq-question { padding: 16px 18px; font-size: 0.9rem; }
+      .faq-answer-inner { padding: 0 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="privacy-nav">
+    <div class="privacy-nav-inner">
+      <a href="index.html" class="nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back to Home
+      </a>
+      <a href="index.html" class="nav-brand">
+        <img src="../assets/icon.png" alt="QuietGood" width="28" height="28">
+        QuietGood
+      </a>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="support-content">
+    <h1 class="support-title">Support</h1>
+    <p class="support-subtitle">Find answers to common questions below, or contact us directly if you need more help.</p>
+
+    <!-- Getting Started -->
+    <div class="faq-section">
+      <div class="faq-section-title">Getting Started</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I create an account?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Open QuietGood and tap "Get Started." You can sign in with your Apple ID, Google account, or an email address. Your account keeps your entries synced and secure.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is QuietGood free?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Yes. QuietGood is completely free with no ads, no in-app purchases, and no tracking. All features are available to every user.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What is the "three good things" practice?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            It's a research-backed gratitude exercise. Each day, you write down three things that went well. Over time, this simple habit has been shown to increase well-being and help you notice more positive moments in your daily life.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your Data -->
+    <div class="faq-section">
+      <div class="faq-section-title">Your Data &amp; Privacy</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How is my data stored?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Your entries are securely stored in Google Cloud Firestore, encrypted in transit (TLS) and at rest (AES-256). Your account is managed through Firebase Authentication. We never read, analyse, or share your entries. See our full <a href="privacy.html">Privacy Notice</a> for details.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I delete my account and data?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Open QuietGood, go to Settings, and tap "Delete Account." This permanently removes your account and all associated data (entries, preferences, and authentication credentials) within 30 days. This action cannot be undone.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I export my data?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            If you would like a copy of your data, please contact us at <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a> and we will provide your data in a portable format within 30 days, in accordance with your data portability rights.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Using the App -->
+    <div class="faq-section">
+      <div class="faq-section-title">Using the App</div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do daily reminders work?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            You can set a daily reminder in Settings to nudge you at your preferred time. These are scheduled as local notifications on your device. You can also enable "morning reflections," which replay a past entry to start your day grounded.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What if I miss a day?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            That's perfectly fine. Your streak will reset, but your past entries are always preserved. QuietGood is about building a gentle habit, not pressure. You can always start again tomorrow.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Does QuietGood work offline?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            QuietGood requires an internet connection to sync your entries and sign in. We recommend using the app with an active connection to ensure your entries are safely stored.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact-section">
+      <h2>Still need help?</h2>
+      <p>If your question isn't answered above, feel free to reach out. We'll get back to you as soon as we can.</p>
+      <a href="mailto:cheuk.coding@gmail.com" class="contact-email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cheuk.coding@gmail.com
+      </a>
+      <p class="contact-note">We typically respond within 48 hours.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="privacy-footer">
+    &copy; 2026 QuietGood. Made with quiet intention.
+  </div>
+
+</body>
+</html>

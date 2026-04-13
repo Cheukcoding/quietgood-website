@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuietGood — Three good things, every day</title>
+  <meta name="description" content="Write down three good things each day. That's it. That's the practice.">
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <link rel="apple-touch-icon" href="../assets/icon.png">
+  <meta property="og:title" content="QuietGood">
+  <meta property="og:description" content="Write down three good things each day. That's it. That's the practice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --green: #19b366;
+      --green-soft: #e6f9ef;
+      --green-mid: #128a4e;
+      --ink: #1e293b;
+      --ink-light: #334155;
+      --grey: #64748b;
+      --grey-light: #94a3b8;
+      --off-white: #fafbfa;
+      --white: #ffffff;
+      --rule: #e8ebe9;
+      --rule-light: #f1f3f2;
+      --serif: 'Source Serif 4', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--off-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 10000;
+      opacity: 0.022;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+    .dots { display: flex; gap: 6px; }
+    .dots span { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
+
+    /* ═══════ NAV ═══════ */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background 0.35s, box-shadow 0.35s; }
+    nav.pinned { background: rgba(250,251,250,0.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--rule); }
+    .nav-bar { max-width: 1080px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-brand { display: flex; align-items: center; gap: 10px; }
+    .nav-brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .nav-brand span { font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.84rem; font-weight: 500; color: var(--grey); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-dl { background: var(--ink); color: var(--white) !important; padding: 8px 18px; border-radius: 999px; font-size: 0.82rem !important; font-weight: 600 !important; transition: opacity 0.2s; }
+    .nav-dl:hover { opacity: 0.85; }
+    .burger { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .burger svg { display: block; }
+
+    /* ═══════ HERO ═══════ */
+    .hero { padding: 140px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: center; }
+    .hero-copy { max-width: 520px; }
+    .hero-copy h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.2vw, 3.8rem);
+      font-weight: 700; line-height: 1.1;
+      letter-spacing: -0.025em; margin-bottom: 20px;
+    }
+    .hero-copy h1 span { color: var(--green); }
+    .hero-copy .sub {
+      font-family: var(--sans);
+      font-size: 1.08rem; color: var(--grey);
+      line-height: 1.65; margin-bottom: 32px;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-store {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ink); color: #fff;
+      padding: 13px 24px; border-radius: 12px;
+      font-size: 0.9rem; font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none; cursor: pointer;
+    }
+    .btn-store:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,41,59,0.18); }
+    .btn-store svg { flex-shrink: 0; }
+    .hero-note { margin-top: 18px; font-size: 0.78rem; color: var(--grey-light); letter-spacing: 0.02em; }
+
+    /* phone mockup */
+    .hero-phone { display: flex; justify-content: flex-end; }
+    .phone {
+      width: 290px;
+      background: #e4e4e9;
+      border-radius: 48px; padding: 9px;
+      box-shadow: 0 32px 64px -12px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.04);
+      animation: drift 7s ease-in-out infinite;
+    }
+    .phone img { border-radius: 40px; display: block; width: 100%; height: auto; }
+    @keyframes drift {
+      0%, 100% { transform: translateY(0) rotate(0.5deg); }
+      50% { transform: translateY(-10px) rotate(-0.5deg); }
+    }
+
+    /* ═══════ MARQUEE ═══════ */
+    .marquee { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-track { display: inline-flex; animation: slide 40s linear infinite; }
+    .marquee-track span { font-size: 0.8rem; font-weight: 500; color: var(--grey); padding: 0 20px; display: flex; align-items: center; gap: 20px; }
+    .marquee-track span::after { content: ''; width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+    @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ═══════ BENTO ═══════ */
+    .bento-section { padding: 80px 0; }
+    .bento-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; gap: 20px; flex-wrap: wrap; }
+    .bento-header h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.2vw, 2.4rem); font-weight: 700; letter-spacing: -0.02em; }
+    .bento-header p { font-size: 0.9rem; color: var(--grey); max-width: 320px; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bento-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      padding: 28px 24px;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .bento-card:hover { border-color: #c8d6ce; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+    .bento-card.wide { grid-column: span 2; }
+    .bento-card.full { grid-column: 1 / -1; }
+    .bc-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); margin-bottom: 8px; }
+    .bc-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+    .bc-desc { font-size: 0.84rem; color: var(--grey); line-height: 1.6; margin-bottom: 20px; }
+
+    /* prompts visual */
+    .bc-prompts-visual { display: flex; flex-direction: column; gap: 6px; }
+    .bc-prompts-visual .pv-line {
+      font-family: var(--serif); font-style: italic; font-size: 0.88rem;
+      padding: 8px 12px; border-radius: 8px;
+      color: var(--grey-light); background: var(--off-white);
+      transition: color 0.5s ease, background 0.5s ease, font-weight 0s;
+    }
+    .bc-prompts-visual .pv-line.active { color: var(--green-mid); background: var(--green-soft); font-weight: 500; }
+
+    /* timeline visual */
+    .bc-timeline-visual { display: flex; flex-direction: column; padding-top: 4px; }
+    .tl-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+    .tl-dot-col { display: flex; flex-direction: column; align-items: center; width: 14px; }
+    .tl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .tl-dot.faded { background: var(--rule); }
+    .tl-line { width: 1.5px; height: 14px; background: var(--rule); }
+    .tl-date { font-size: 0.72rem; font-weight: 600; color: var(--grey-light); width: 52px; }
+    .tl-text { font-size: 0.78rem; color: var(--grey); flex: 1; }
+
+    /* streak visual */
+    .bc-streak-visual { display: flex; align-items: baseline; gap: 6px; padding: 10px 0; }
+    .streak-num { font-family: var(--serif); font-size: 3.2rem; font-weight: 700; color: var(--ink); line-height: 1; }
+    .streak-label { font-size: 0.78rem; color: var(--grey); line-height: 1.3; }
+
+    /* word cloud */
+    .bc-cloud-visual { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 10px; padding: 8px 0; min-height: 80px; }
+    .cw { font-weight: 600; color: var(--ink-light); line-height: 1; }
+    .cw-1 { font-size: 1.4rem; color: var(--green); }
+    .cw-2 { font-size: 1.1rem; }
+    .cw-3 { font-size: 0.88rem; color: var(--grey); }
+    .cw-4 { font-size: 0.76rem; color: var(--grey-light); }
+
+    /* notification */
+    .bc-notif-visual { background: var(--off-white); border-radius: 12px; padding: 12px 14px; display: flex; gap: 10px; align-items: flex-start; }
+    .notif-icon { width: 32px; height: 32px; background: var(--green-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .notif-icon img { width: 20px; height: 20px; border-radius: 4px; }
+    .notif-text-wrap { flex: 1; }
+    .notif-app { font-size: 0.68rem; font-weight: 700; color: var(--grey-light); letter-spacing: 0.04em; text-transform: uppercase; }
+    .notif-body { font-size: 0.8rem; color: var(--ink); line-height: 1.45; margin-top: 2px; }
+
+    /* ═══════ DARK SECTION ═══════ */
+    .dark-section { background: var(--ink); padding: 80px 0; overflow: hidden; }
+    .dark-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: center; }
+    .dark-phone-wrap { display: flex; justify-content: center; }
+    .dark-phone {
+      width: 260px;
+      background: #2a2a30;
+      border-radius: 44px; padding: 8px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset;
+    }
+    .dark-phone img { border-radius: 37px; display: block; width: 100%; height: auto; }
+    .dark-copy { color: #f1f5f9; }
+    .dark-copy .dots span { background: #34d399; }
+    .dark-copy .dc-dots { margin-bottom: 18px; }
+    .dark-copy h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .dark-copy > p { font-size: 0.95rem; color: #a1a1aa; line-height: 1.7; margin-bottom: 32px; max-width: 420px; }
+    .dark-features { display: flex; flex-direction: column; gap: 18px; }
+    .df-item { display: flex; align-items: flex-start; gap: 14px; }
+    .df-icon {
+      width: 36px; height: 36px;
+      background: rgba(52,211,153,0.1);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .df-icon svg { width: 18px; height: 18px; stroke: #34d399; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .df-text h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 2px; }
+    .df-text p { font-size: 0.82rem; color: #71717a; line-height: 1.55; }
+
+    /* ═══════ QUOTE ═══════ */
+    .quote-section { padding: 72px 0; text-align: center; }
+    .quote-section .dots { justify-content: center; margin-bottom: 28px; }
+    .quote-text {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+      font-weight: 400; font-style: italic;
+      color: var(--ink-light); line-height: 1.55;
+      max-width: 600px; margin: 0 auto 16px;
+    }
+    .quote-attr { font-size: 0.84rem; font-weight: 600; color: var(--green); }
+
+    /* ═══════ CTA ═══════ */
+    .cta-section { padding: 72px 0 96px; text-align: center; }
+    .cta-icon { width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin: 0 auto 32px; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .cta-section p { font-size: 0.92rem; color: var(--grey); margin-bottom: 32px; }
+
+    /* ═══════ FOOTER ═══════ */
+    footer { border-top: 1px solid var(--rule); padding: 32px 0; }
+    .foot-inner { max-width: 1080px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .foot-brand { display: flex; align-items: center; gap: 8px; }
+    .foot-brand img { width: 24px; height: 24px; border-radius: 6px; }
+    .foot-brand span { font-size: 0.84rem; font-weight: 600; }
+    .foot-links { display: flex; gap: 22px; list-style: none; }
+    .foot-links a { font-size: 0.8rem; color: var(--grey); transition: color 0.2s; }
+    .foot-links a:hover { color: var(--ink); }
+    .foot-copy { width: 100%; text-align: center; font-size: 0.74rem; color: var(--grey-light); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule-light); }
+
+    /* ═══════ REVEALS ═══════ */
+    .rv { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
+    .rv.on { opacity: 1; transform: translateY(0); }
+    .rv-d1 { transition-delay: 0.08s; }
+    .rv-d2 { transition-delay: 0.16s; }
+    .rv-d3 { transition-delay: 0.24s; }
+    .rv-d4 { transition-delay: 0.32s; }
+    .rv-d5 { transition-delay: 0.38s; }
+
+    /* ═══════ RESPONSIVE ═══════ */
+    @media (max-width: 920px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-copy { max-width: 100%; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      .hero-note { text-align: center; }
+      .hero-phone { justify-content: center; margin-top: 12px; }
+      .phone { width: 260px; }
+      .bento { grid-template-columns: repeat(2, 1fr); }
+      .bento-card.wide { grid-column: span 2; }
+      .bento-card.full { grid-column: span 2; }
+      .dark-grid { grid-template-columns: 1fr; text-align: center; }
+      .dark-phone-wrap { order: -1; }
+      .dark-copy > p { margin-left: auto; margin-right: auto; }
+      .dark-features { align-items: center; }
+      .df-item { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 60px; left: 0; right: 0;
+        background: rgba(250,251,250,0.95);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        padding: 16px 28px 20px; gap: 14px;
+        border-bottom: 1px solid var(--rule);
+      }
+      .burger { display: block; }
+      .hero { padding: 110px 0 56px; }
+      .phone { width: 240px; }
+      .bento { grid-template-columns: 1fr; }
+      .bento-card.wide { grid-column: span 1; }
+      .bento-card.full { grid-column: span 1; }
+      .bento-section { padding: 56px 0; }
+      .dark-section { padding: 56px 0; }
+      .dark-phone { width: 220px; }
+      .marquee { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-bar">
+      <a href="#" class="nav-brand">
+        <img src="../assets/icon.png" alt="QuietGood" width="34" height="34">
+        <span>QuietGood</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#growth">Growth</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="#download" class="nav-dl">Download</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy rv">
+          <h1>Three good things, <span>every day.</span></h1>
+          <p class="sub">Write down what went well today. That's it. Over time, you'll start noticing more of it.</p>
+          <div class="hero-actions">
+            <a href="#download" class="btn-store">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              Download on the App Store
+            </a>
+          </div>
+          <p class="hero-note">Free &middot; No ads &middot; No tracking</p>
+        </div>
+        <div class="hero-phone rv rv-d2">
+          <div class="phone">
+            <img src="screenshots/home-light.png" alt="QuietGood — today's reflection">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="marquee-track" id="marqueeTrack">
+      <span>Daily Prompts</span><span>Your Timeline</span><span>Streak Tracking</span><span>Word Cloud</span><span>Morning Reflections</span><span>Dark Mode</span><span>Cloud Sync</span><span>Private &amp; Secure</span>
+      <span>Daily Prompts</span><span>Your Timeline</span><span>Streak Tracking</span><span>Word Cloud</span><span>Morning Reflections</span><span>Dark Mode</span><span>Cloud Sync</span><span>Private &amp; Secure</span>
+    </div>
+  </div>
+
+  <!-- BENTO FEATURES -->
+  <section class="bento-section" id="features">
+    <div class="wrap">
+      <div class="bento-header rv">
+        <h2>What's inside</h2>
+        <p>Every detail exists to support the practice. Nothing extra.</p>
+      </div>
+      <div class="bento">
+
+        <!-- prompts — wide card -->
+        <div class="bento-card wide rv rv-d1">
+          <div class="bc-label">Prompts</div>
+          <div class="bc-title">A different question every day</div>
+          <div class="bc-desc">Over 30 rotating prompts to keep your reflections fresh. No two days feel the same.</div>
+          <div class="bc-prompts-visual" id="promptVisual">
+            <div class="pv-line active">"What made you smile today?"</div>
+            <div class="pv-line">"What's something you're looking forward to?"</div>
+            <div class="pv-line">"Who made a difference in your day?"</div>
+          </div>
+        </div>
+
+        <!-- timeline -->
+        <div class="bento-card rv rv-d2">
+          <div class="bc-label">Journal</div>
+          <div class="bc-title">Your story, day by day</div>
+          <div class="bc-desc">Every entry saved. Scroll back whenever you need a reminder.</div>
+          <div class="bc-timeline-visual">
+            <div class="tl-row">
+              <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-date">Today</div>
+              <div class="tl-text">A warm cup of tea...</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+              <div class="tl-date">Apr 2</div>
+              <div class="tl-text">Finished that book I started...</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-dot-col"><div class="tl-dot faded"></div><div class="tl-line"></div></div>
+              <div class="tl-date">Apr 1</div>
+              <div class="tl-text">Saw the cherry blossoms...</div>
+            </div>
+            <div class="tl-row">
+              <div class="tl-dot-col"><div class="tl-dot faded"></div></div>
+              <div class="tl-date">Mar 31</div>
+              <div class="tl-text">Cooked something new...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- streaks -->
+        <div class="bento-card rv rv-d3">
+          <div class="bc-label">Streaks</div>
+          <div class="bc-title">Consistency compounds</div>
+          <div class="bc-desc">Watch your streak grow. One entry at a time.</div>
+          <div class="bc-streak-visual">
+            <span class="streak-num" id="streakNum">0</span>
+            <span class="streak-label">day<br>streak</span>
+          </div>
+        </div>
+
+        <!-- word cloud -->
+        <div class="bento-card wide rv rv-d4">
+          <div class="bc-label">Insights</div>
+          <div class="bc-title">What fills your heart</div>
+          <div class="bc-desc">Your most-mentioned words, visualised.</div>
+          <div class="bc-cloud-visual">
+            <span class="cw cw-1">family</span>
+            <span class="cw cw-3">sunshine</span>
+            <span class="cw cw-2">coffee</span>
+            <span class="cw cw-4">walk</span>
+            <span class="cw cw-1">friends</span>
+            <span class="cw cw-3">music</span>
+            <span class="cw cw-2">cooking</span>
+            <span class="cw cw-4">laughter</span>
+            <span class="cw cw-3">quiet</span>
+          </div>
+        </div>
+
+        <!-- notifications — full-width card -->
+        <div class="bento-card full rv rv-d5">
+          <div class="bc-label">Reflections</div>
+          <div class="bc-title">A gentle morning nudge</div>
+          <div class="bc-desc">Replay a past entry to start your day grounded.</div>
+          <div class="bc-notif-visual">
+            <div class="notif-icon">
+              <img src="../assets/icon.png" alt="QG" width="20" height="20">
+            </div>
+            <div class="notif-text-wrap">
+              <div class="notif-app">QuietGood</div>
+              <div class="notif-body">Remember when you wrote: "A warm cup of tea this morning"?</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK — GROWTH -->
+  <section class="dark-section" id="growth">
+    <div class="wrap">
+      <div class="dark-grid">
+        <div class="dark-phone-wrap rv">
+          <div class="dark-phone">
+            <img src="screenshots/growth-dark.png" alt="Growth calendar in dark mode">
+          </div>
+        </div>
+        <div class="dark-copy rv rv-d2">
+          <div class="dots dc-dots"><span></span><span></span><span></span></div>
+          <h2>Watch your practice grow</h2>
+          <p>Streaks, calendars, and insights that reveal what matters most to you. Not to gamify — just to show you what you've built.</p>
+          <div class="dark-features">
+            <div class="df-item">
+              <div class="df-icon">
+                <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="df-text">
+                <h4>Streak tracking</h4>
+                <p>See how many consecutive days you've reflected.</p>
+              </div>
+            </div>
+            <div class="df-item">
+              <div class="df-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="df-text">
+                <h4>Calendar view</h4>
+                <p>Dots for each day. See your month at a glance.</p>
+              </div>
+            </div>
+            <div class="df-item">
+              <div class="df-icon">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div class="df-text">
+                <h4>Word cloud</h4>
+                <p>Your most-written words, sized by frequency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="wrap rv">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <blockquote class="quote-text">"Gratitude turns what we have into enough."</blockquote>
+      <div class="quote-attr">Melody Beattie</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="download">
+    <div class="wrap rv">
+      <img src="../assets/icon.png" alt="QuietGood" class="cta-icon" width="72" height="72">
+      <h2>Start noticing the good.</h2>
+      <p>Free to download. No ads, no tracking, no noise.</p>
+      <a href="#" class="btn-store">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on the App Store
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <img src="../assets/icon.png" alt="QG" width="24" height="24">
+        <span>QuietGood</span>
+      </div>
+      <ul class="foot-links">
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="mailto:cheuk.coding@gmail.com">Contact</a></li>
+      </ul>
+      <div class="foot-copy">&copy; 2026 QuietGood</div>
+    </div>
+  </footer>
+
+  <script>
+    /* nav scroll */
+    const nav = document.getElementById('nav');
+    addEventListener('scroll', () => nav.classList.toggle('pinned', scrollY > 24), { passive: true });
+
+    /* burger */
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+    burger.onclick = () => navLinks.classList.toggle('open');
+    navLinks.querySelectorAll('a').forEach(a => a.onclick = () => navLinks.classList.remove('open'));
+
+    /* scroll reveal */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    /* prompt rotation */
+    const lines = document.querySelectorAll('#promptVisual .pv-line');
+    let pi = 0;
+    setInterval(() => {
+      lines[pi].classList.remove('active');
+      pi = (pi + 1) % lines.length;
+      lines[pi].classList.add('active');
+    }, 3000);
+
+    /* streak counter */
+    let streakDone = false;
+    const streakEl = document.getElementById('streakNum');
+    const streakObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !streakDone) {
+          streakDone = true;
+          let n = 0; const end = 34;
+          const run = () => { if (n < end) { n++; streakEl.textContent = n; setTimeout(run, 50); } };
+          run();
+          streakObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    streakObs.observe(streakEl);
+  </script>
+</body>
+</html>
