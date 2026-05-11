@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Notice — ASK</title>
+  <meta name="description" content="ASK privacy notice. We collect no personal data. Everything stays on your device.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #7c3aed;
+      --accent-light: #ede9fe;
+      --accent-dark: #5b21b6;
+      --text: #1e293b;
+      --text-secondary: #64748b;
+      --text-tertiary: #94a3b8;
+      --bg: #f9f8ff;
+      --bg-surface: #ffffff;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.022;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    a { color: var(--accent-dark); text-decoration: underline; text-decoration-color: var(--accent-light); text-underline-offset: 3px; transition: text-decoration-color 0.2s; }
+    a:hover { text-decoration-color: var(--accent); }
+
+    /* ── Navigation ── */
+    .privacy-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 248, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .privacy-nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-brand:hover { text-decoration: none; }
+    .nav-logo {
+      width: 28px; height: 28px;
+      border-radius: 7px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    }
+    .nav-logo svg { width: 16px; height: 16px; color: #fff; }
+    .nav-label {
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      font-weight: 400;
+    }
+
+    /* ── Content ── */
+    .privacy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .privacy-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .privacy-updated {
+      font-size: 0.88rem;
+      color: var(--text-tertiary);
+      margin-bottom: 48px;
+    }
+
+    /* ── Table of Contents ── */
+    .toc {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+    .toc ol li {
+      counter-increment: toc;
+      margin-bottom: 8px;
+    }
+    .toc ol li a {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.2s;
+    }
+    .toc ol li a::before {
+      content: counter(toc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .toc ol li a:hover { color: var(--accent); }
+
+    /* ── Sections ── */
+    .policy-section {
+      margin-bottom: 40px;
+    }
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-top: 8px;
+    }
+    .policy-section h2::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--accent);
+      margin-top: 10px;
+      border-radius: 2px;
+    }
+    .policy-section p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.75;
+    }
+    .policy-section ul {
+      list-style: none;
+      margin-bottom: 16px;
+    }
+    .policy-section ul li {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+    .policy-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .policy-section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── Highlight Box ── */
+    .highlight-box {
+      background: var(--accent-light);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .highlight-box p {
+      color: var(--accent-dark);
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    /* ── Rights Grid ── */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .rights-grid .right-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 0.88rem;
+    }
+    .rights-grid .right-item strong {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+    .rights-grid .right-item span {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Contact Box ── */
+    .contact-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+    }
+    .contact-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .contact-box h2::after { display: none; }
+    .contact-box p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-email:hover { background: #ddd6fe; text-decoration: none; }
+
+    /* ── Footer ── */
+    .privacy-footer {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .privacy-content { padding: 40px 20px 60px; }
+      .rights-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <div class="privacy-nav">
+    <div class="privacy-nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        ASK
+      </a>
+      <span class="nav-label">Privacy Notice</span>
+    </div>
+  </div>
+
+  <!-- ── Content ── -->
+  <div class="privacy-content">
+    <h1 class="privacy-title">Privacy Notice</h1>
+    <p class="privacy-updated">Last updated: 11 May 2026</p>
+
+    <!-- ── Table of Contents ── -->
+    <div class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#who-we-are">Who we are</a></li>
+        <li><a href="#data-we-collect">What data we collect</a></li>
+        <li><a href="#how-we-use">How we use your data</a></li>
+        <li><a href="#third-party">Third-party services</a></li>
+        <li><a href="#your-rights">Your rights</a></li>
+        <li><a href="#children">Children's privacy</a></li>
+        <li><a href="#california">California privacy rights (CCPA)</a></li>
+        <li><a href="#changes">Changes to this policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- ── 1. Who We Are ── -->
+    <div class="policy-section" id="who-we-are">
+      <h2>1. Who we are</h2>
+      <p>ASK is an independent mobile application that provides curated card decks with deep, meaningful questions — designed to help couples, friends, colleagues, and teammates understand each other better ("we," "us," or "our").</p>
+      <p>This notice explains what data we collect (very little), how it is used, and how it is protected.</p>
+      <p><strong>Contact:</strong> <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a></p>
+    </div>
+
+    <!-- ── 2. What Data We Collect ── -->
+    <div class="policy-section" id="data-we-collect">
+      <h2>2. What data we collect</h2>
+      <div class="highlight-box">
+        <p>ASK does not require an account and does not transmit any personal data to external servers. All app activity stays entirely on your device.</p>
+      </div>
+      <p>The only data stored is local app state (such as which cards you have viewed), kept solely on your device and never sent anywhere. This data is automatically removed when you delete the app.</p>
+      <p>We do not collect your name, email address, phone number, location, or any other personally identifiable information. We do not use analytics, advertising, or tracking SDKs of any kind.</p>
+    </div>
+
+    <!-- ── 3. How We Use Your Data ── -->
+    <div class="policy-section" id="how-we-use">
+      <h2>3. How we use your data</h2>
+      <p>Because ASK collects no personal data, there is nothing to process, share, or sell. The app functions entirely offline using content bundled within the app itself. No internet connection is required to use ASK.</p>
+    </div>
+
+    <!-- ── 4. Third-Party Services ── -->
+    <div class="policy-section" id="third-party">
+      <h2>4. Third-party services</h2>
+      <p>ASK does not integrate any third-party analytics, advertising, or cloud services. The only third-party involvement is Apple's standard App Store delivery infrastructure, which is governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's own Privacy Policy</a>.</p>
+    </div>
+
+    <!-- ── 5. Your Rights ── -->
+    <div class="policy-section" id="your-rights">
+      <h2>5. Your rights</h2>
+      <p>Under the General Data Protection Regulation (GDPR) and similar laws, you have rights regarding your personal data. Because ASK does not collect personal data, most of these rights are satisfied by default — there is no data for us to hold, share, or delete on our end.</p>
+      <div class="rights-grid">
+        <div class="right-item">
+          <strong>Access</strong>
+          <span>No personal data is held by us</span>
+        </div>
+        <div class="right-item">
+          <strong>Erasure</strong>
+          <span>Delete the app to remove all local state</span>
+        </div>
+        <div class="right-item">
+          <strong>Portability</strong>
+          <span>No personal data to export</span>
+        </div>
+        <div class="right-item">
+          <strong>Objection</strong>
+          <span>No processing to object to</span>
+        </div>
+      </div>
+      <p>If you have any questions about your rights, please contact us at the email below.</p>
+    </div>
+
+    <!-- ── 6. Children ── -->
+    <div class="policy-section" id="children">
+      <h2>6. Children's privacy</h2>
+      <p>ASK does not knowingly collect personal data from anyone, including children under 13 (or under 16 in certain jurisdictions). Since no data is collected at all, there is no risk of unintended collection from younger users.</p>
+      <p>We recommend that parents and guardians review card content with younger children, as some questions are intended for mature audiences.</p>
+    </div>
+
+    <!-- ── 7. California Privacy Rights (CCPA) ── -->
+    <div class="policy-section" id="california">
+      <h2>7. California privacy rights (CCPA)</h2>
+      <p>If you are a California resident, the California Consumer Privacy Act (CCPA) provides you with additional rights regarding your personal information.</p>
+      <div class="highlight-box">
+        <p>We do not collect, sell, or share any personal information. We do not use personal information for cross-context behavioural advertising. There is no personal data to request, delete, or restrict.</p>
+      </div>
+      <p>If you have questions about your CCPA rights, contact us at <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a>.</p>
+    </div>
+
+    <!-- ── 8. Changes ── -->
+    <div class="policy-section" id="changes">
+      <h2>8. Changes to this policy</h2>
+      <p>We may update this privacy notice from time to time. When we make material changes, we will update the "Last updated" date at the top of this page. The latest version will always be available at this URL.</p>
+    </div>
+
+    <!-- ── 9. Contact ── -->
+    <div class="policy-section contact-box" id="contact">
+      <h2>Contact</h2>
+      <p>Questions or concerns about this privacy notice? We'd love to hear from you.</p>
+      <a href="mailto:cheuk.coding@gmail.com" class="contact-email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cheuk.coding@gmail.com
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <div class="privacy-footer">
+    &copy; 2026 ASK. Deeper conversations start here.
+  </div>
+
+</body>
+</html>
