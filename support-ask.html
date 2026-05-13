@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — ASK Slowly</title>
+  <meta name="description" content="Help and answers for ASK Slowly. A card deck for deeper, unhurried conversations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink: #1a1625;
+      --ink-soft: #4a4458;
+      --ink-mute: #7a7488;
+      --ink-faint: #b8b3c4;
+      --cream: #faf7f2;
+      --cream-warm: #f5efe6;
+      --paper: #ffffff;
+      --rule: #e8e2d6;
+      --rule-soft: #f0ebe0;
+      --accent: #6b46c1;
+      --accent-warm: #a855f7;
+      --accent-glow: rgba(107, 70, 193, 0.08);
+      --serif: 'Instrument Serif', 'Source Serif 4', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.65;
+      font-feature-settings: 'ss01', 'cv11';
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10000;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(107, 70, 193, 0.3);
+      transition: text-decoration-color 0.2s;
+    }
+    a:hover { text-decoration-color: var(--accent); }
+
+    /* ── Top bar ── */
+    .topbar {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--rule);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand:hover { text-decoration: none; }
+    .brand-mark {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(107, 70, 193, 0.25);
+      font-family: var(--serif);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      font-size: 0.78rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 72px 32px 56px;
+    }
+    .hero-eyebrow {
+      font-size: 0.74rem;
+      color: var(--ink-mute);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-lede {
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      max-width: 580px;
+      line-height: 1.55;
+    }
+
+    /* ── Quick links ── */
+    .quick-links {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 32px 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 720px) {
+      .quick-links { grid-template-columns: 1fr; }
+    }
+    .quick {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 22px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .quick:hover {
+      text-decoration: none;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .quick-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .quick-icon svg { width: 18px; height: 18px; }
+    .quick-text {
+      flex: 1;
+    }
+    .quick-label {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin-bottom: 3px;
+    }
+    .quick-hint {
+      font-size: 0.82rem;
+      color: var(--ink-mute);
+      line-height: 1.4;
+    }
+
+    /* ── FAQ ── */
+    .faq {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 16px 32px 32px;
+    }
+    .faq-group {
+      margin-bottom: 48px;
+    }
+    .faq-group:last-child { margin-bottom: 0; }
+
+    .faq-group-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .faq-group-num {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .faq-group-title {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--rule);
+    }
+    .faq-item:last-child { border-bottom: none; }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 22px 0;
+      font-family: var(--sans);
+      font-size: 1.02rem;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-question .plus {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--ink-faint);
+      color: var(--ink-mute);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s ease, border-color 0.2s, color 0.2s;
+    }
+    .faq-question .plus svg {
+      width: 11px; height: 11px;
+    }
+    .faq-question:hover .plus { border-color: var(--accent); color: var(--accent); }
+    .faq-item.open .faq-question .plus {
+      transform: rotate(45deg);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 700px;
+    }
+    .faq-answer-inner p { margin-bottom: 12px; }
+    .faq-answer-inner p:last-child { margin-bottom: 0; }
+    .faq-answer-inner strong { color: var(--ink); font-weight: 600; }
+
+    /* ── Contact ── */
+    .contact {
+      max-width: 920px;
+      margin: 32px auto 0;
+      padding: 0 32px 24px;
+    }
+    .contact-card {
+      background: var(--ink);
+      color: var(--cream);
+      border-radius: 20px;
+      padding: 48px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card::after {
+      content: '';
+      position: absolute;
+      bottom: -60%; right: -10%;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-eyebrow {
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      font-weight: 600;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .contact-title {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 520px;
+      position: relative;
+    }
+    .contact-title em {
+      font-style: italic;
+      color: var(--accent-warm);
+    }
+    .contact-body {
+      font-size: 0.98rem;
+      color: rgba(250, 247, 242, 0.78);
+      max-width: 520px;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative;
+    }
+    .contact-btn:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    }
+    .contact-note {
+      font-size: 0.82rem;
+      color: rgba(250, 247, 242, 0.55);
+      margin-top: 18px;
+      position: relative;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--ink-mute);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer a {
+      color: var(--ink-mute);
+      text-decoration-color: var(--rule);
+    }
+    .footer a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .topbar { padding: 20px 24px; }
+      .hero { padding: 52px 24px 40px; }
+      .quick-links { padding: 0 24px 40px; }
+      .faq { padding: 8px 24px 24px; }
+      .contact { padding: 0 24px 24px; }
+      .contact-card { padding: 36px 28px; border-radius: 16px; }
+      .footer { padding: 24px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top bar ── -->
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <div class="brand-mark">A</div>
+      <div class="brand-name">ASK Slowly</div>
+    </a>
+    <span class="brand-tag">Support</span>
+  </header>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-eyebrow">Help & Support</div>
+    <h1 class="hero-title">A few <em>quiet answers</em> to common questions.</h1>
+    <p class="hero-lede">ASK Slowly is built for unhurried conversations, so support is too. Most things you'd want to know are below. If not, the door is open.</p>
+  </section>
+
+  <!-- ── Quick links ── -->
+  <section class="quick-links">
+    <a href="#getting-started" class="quick">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="quick-text">
+        <div class="quick-label">Getting started</div>
+        <div class="quick-hint">First card, first conversation.</div>
+      </div>
+    </a>
+    <a href="#using-the-app" class="quick">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+      </div>
+      <div class="quick-text">
+        <div class="quick-label">Using the app</div>
+        <div class="quick-hint">Decks, modes, and pacing.</div>
+      </div>
+    </a>
+    <a href="#privacy" class="quick">
+      <div class="quick-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="quick-text">
+        <div class="quick-label">Privacy & data</div>
+        <div class="quick-hint">Short answer: nothing's collected.</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <main class="faq">
+
+    <!-- Getting Started -->
+    <section class="faq-group" id="getting-started">
+      <div class="faq-group-header">
+        <span class="faq-group-num">01</span>
+        <h2 class="faq-group-title">Getting started</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What is ASK Slowly?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>ASK Slowly is a card deck for deeper conversations. Pick a card, ask the question, listen — that's it. The cards are designed to help couples, friends, colleagues, and teammates understand each other better, one slow question at a time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Do I need an account?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>No. There is no sign-up, no email required, and no login. Open the app and start.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Does it need an internet connection?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>No. ASK Slowly works fully offline. The cards live inside the app, so you can use it on a plane, in a quiet corner of a park, or anywhere your phone is.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Who is ASK Slowly for?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Anyone who wants better conversations with the people in their life. Couples on a slow Sunday morning. Friends on a long drive. New teams at an offsite. Family at the dinner table. The questions span light, curious, and tender — you choose the pace.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Using the App -->
+    <section class="faq-group" id="using-the-app">
+      <div class="faq-group-header">
+        <span class="faq-group-num">02</span>
+        <h2 class="faq-group-title">Using the app</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I use the cards with someone?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Open a deck, draw a card, and take turns answering. One question, both people speak. There is no scoring, no winning, and no rush. The best conversations happen when you give an answer enough room to breathe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What if a question feels too heavy?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Skip it. Some cards open doors that aren't ready to be opened, and that's okay. ASK Slowly is an invitation, not an obligation. Pass to the next card and come back another day — or never. Both are valid.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I use it on my own?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Yes. Many people use ASK Slowly as a solo reflection prompt — draw one card a day, sit with it, write your own answer down somewhere. The cards work whether you have a partner across the table or only yourself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Are there different decks for different relationships?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>The decks are organised by the kind of conversation you want — gentle ice-breakers, getting-to-know-you, deeper reflections, and more. Browse the deck list in the app to find what fits the moment.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Is ASK Slowly free?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>The app is free to download. If there are any optional in-app purchases — such as additional decks — they will always be clearly labelled inside the app. There are no ads and no tracking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="faq-group" id="privacy">
+      <div class="faq-group-header">
+        <span class="faq-group-num">03</span>
+        <h2 class="faq-group-title">Privacy & data</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          What data does ASK Slowly collect?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p><strong>None.</strong> ASK Slowly has no servers, no analytics, and no tracking SDKs. The conversations you have are your own — we never see them because we never receive them.</p>
+            <p>Read the full <a href="privacy-ask.html">Privacy Notice</a> for the longer version.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Are my answers stored anywhere?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>ASK Slowly is intentionally designed not to record your spoken answers. Cards are a prompt, not a transcript. If you'd like to keep an answer, write it down somewhere private — a notebook, the Notes app, anywhere you trust.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          How do I delete the app and everything in it?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Press and hold the app icon on your home screen, then tap "Remove App." That removes ASK Slowly and any local state — no extra cleanup required, because nothing was ever sent off your device.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="faq-group" id="troubleshooting">
+      <div class="faq-group-header">
+        <span class="faq-group-num">04</span>
+        <h2 class="faq-group-title">Troubleshooting</h2>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          The app won't open or has crashed.
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Try the usual three: force-quit the app and reopen it, restart your phone, then check the App Store for an available update. If the issue persists, send us a note with your iOS version and device model — we'll dig in.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          I have a feature request or found a bug.
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Brilliant. ASK Slowly is built by one person and feedback is read directly. Email <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a> with what you saw, what you expected, and a screenshot if it's a bug.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          Can I suggest a new question for a deck?
+          <span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <p>Always welcome. If you've come across a question that opened something tender or revealing, send it along. Good questions are rare and worth collecting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Contact ── -->
+  <section class="contact">
+    <div class="contact-card">
+      <div class="contact-eyebrow">Still stuck?</div>
+      <h2 class="contact-title">Just <em>ask.</em> A real person reads every message.</h2>
+      <p class="contact-body">ASK Slowly is made by one independent developer. There is no support queue, no auto-replies, no chatbot triage. Send a note and you'll hear back, usually within a couple of days.</p>
+      <a href="mailto:cheuk.coding@gmail.com?subject=ASK%20Slowly%20support" class="contact-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        cheuk.coding@gmail.com
+      </a>
+      <p class="contact-note">Typically a reply within 48 hours.</p>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <span>&copy; 2026 ASK Slowly. An independent app.</span>
+    <span><a href="privacy-ask.html">Privacy Notice</a></span>
+  </footer>
+
+</body>
+</html>
