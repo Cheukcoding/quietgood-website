@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Gloss Daily</title>
+  <meta name="description" content="Privacy Policy for Gloss Daily, a calm ambient English-vocabulary app for iOS. We collect the minimum to run the app, use no trackers or ads, and never sell your data.">
+  <meta name="theme-color" content="#FAF9F5">
+
+  <!-- The ONLY external request: the Google Fonts stylesheet (Fraunces + Inter). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ────────────────────────────────────────────────────────────────
+       DESIGN SYSTEM — strictly monochrome: warm cream + charcoal.
+       Emphasis comes only from contrast, type weight and whitespace.
+       ──────────────────────────────────────────────────────────────── */
+    :root {
+      --paper:     #FAF9F5; /* page background — warm cream */
+      --ink:       #1C1B18; /* headings — charcoal */
+      --body:      #2E2D29; /* body text — softer than ink */
+      --graphite:  #6B6A64; /* secondary / meta */
+      --mist:      #A3A29B; /* tertiary / fine print */
+      --hairline:  #E7E4DC; /* 1px dividers */
+      --linen:     #F0EEE6; /* optional quiet callout surface */
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      color-scheme: light;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--body);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Links: ink, underlined; on hover → graphite ─────────────────── */
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+      transition: color 0.2s ease;
+    }
+    a:hover { color: var(--graphite); }
+    a:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       LAYOUT — single centred column, max-width 720px.
+       ──────────────────────────────────────────────────────────────── */
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 32px 64px; /* top / sides / bottom (desktop) */
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────── */
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--mist);
+    }
+
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 44px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-top: 14px;
+    }
+
+    .updated {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--graphite);
+      margin-top: 14px;
+    }
+
+    /* ── Hairline rule ───────────────────────────────────────────────── */
+    .rule {
+      border: 0;
+      border-top: 1px solid var(--hairline);
+    }
+    .header-rule { margin-top: 28px; }
+
+    /* ── Sections ────────────────────────────────────────────────────── */
+    section { margin-top: 56px; }
+    section:first-of-type { margin-top: 40px; } /* after the header rule */
+
+    /* A faint divider before some sections for rhythm (added selectively). */
+    section.divided { padding-top: 56px; border-top: 1px solid var(--hairline); }
+    section.divided { margin-top: 56px; }
+
+    h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    /* A small label used inside a section to introduce a sub-group. */
+    h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--ink);
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    p { margin-top: 16px; }
+    p:first-of-type { margin-top: 0; }
+
+    em { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
+
+    /* ── Lists: subtle en-dash markers, never heavy bullets ──────────── */
+    ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+    li {
+      position: relative;
+      padding-left: 22px;
+      margin-top: 10px;
+    }
+    li::before {
+      content: "–";              /* en-dash marker */
+      position: absolute;
+      left: 0;
+      color: var(--mist);
+    }
+    li:first-child { margin-top: 0; }
+
+    /* Emphasise the lead phrase of a list item without using colour. */
+    li strong { font-weight: 600; color: var(--ink); }
+
+    /* ────────────────────────────────────────────────────────────────
+       QUIET CALLOUT — used ONCE, for the account-deletion steps.
+       ──────────────────────────────────────────────────────────────── */
+    .callout {
+      margin-top: 20px;
+      background: var(--linen);
+      border: 1px solid var(--hairline);
+      border-radius: 20px;
+      padding: 24px 28px;
+      box-shadow: 0 6px 16px rgba(28, 27, 24, 0.06); /* very soft */
+    }
+    .callout h3 { margin-top: 0; }
+    .callout p { margin-top: 12px; }
+
+    /* ── Footer ──────────────────────────────────────────────────────── */
+    footer {
+      margin-top: 64px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hairline);
+      font-size: 13px;
+      color: var(--mist);
+    }
+    footer p { margin-top: 6px; }
+    footer p:first-child { margin-top: 0; }
+    footer a { color: var(--mist); }
+    footer a:hover { color: var(--graphite); }
+
+    /* ────────────────────────────────────────────────────────────────
+       RESPONSIVE — single column at every width; reduce scale on mobile.
+       ──────────────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .page { padding: 48px 22px 56px; }
+      body { font-size: 16px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 21px; }
+      .callout { padding: 20px 20px; }
+    }
+
+    /* ────────────────────────────────────────────────────────────────
+       PRINT — legible black-on-white, no decorative surfaces.
+       ──────────────────────────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; color: #000; }
+      a { color: #000; }
+      .callout { background: #fff; box-shadow: none; }
+      .page { padding: 0; max-width: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- ════════════════════════════════════════════════════════════
+         1. HEADER
+         ════════════════════════════════════════════════════════════ -->
+    <header>
+      <p class="eyebrow">Gloss Daily</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: 27 June 2026</p>
+      <hr class="rule header-rule">
+    </header>
+
+    <!-- ════════════════════════════════════════════════════════════
+         2. INTRO
+         ════════════════════════════════════════════════════════════ -->
+    <section aria-label="Introduction">
+      <p>Gloss Daily is built to be quiet and respectful. We collect only the
+      minimum we need to run the app and keep your words safe across your
+      devices. We use no trackers, no advertising, and no analytics — and we
+      never sell your personal data. This policy explains, in plain English,
+      what we hold and the choices you have.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         3. INFORMATION WE COLLECT
+         ════════════════════════════════════════════════════════════ -->
+    <section class="divided">
+      <h2>Information We Collect</h2>
+
+      <h3>Automatically, when you first open the app</h3>
+      <p>The app creates an <em>anonymous</em> account for you — a random ID — so
+      it works instantly with no sign-up. At this stage we do <strong>not</strong>
+      collect your name or email address.</p>
+
+      <h3>Your content</h3>
+      <p>The things you create in the app:</p>
+      <ul>
+        <li>Words you save and custom words you add yourself</li>
+        <li>Tags and short notes you attach to words</li>
+        <li>Your preferences, such as reading level and reminder time</li>
+      </ul>
+
+      <h3>Only if you choose to sign in</h3>
+      <p>Signing in with <strong>Sign in with Apple</strong> or <strong>Sign in
+      with Google</strong> is optional. If you do, we receive your email address
+      and your name (if the provider shares it). With Sign in with Apple you can
+      use <em>Hide My Email</em>, in which case we only ever see a private Apple
+      relay address rather than your real one.</p>
+
+      <h3>What we do NOT collect</h3>
+      <ul>
+        <li>Precise location</li>
+        <li>Contacts</li>
+        <li>Photos or your photo library</li>
+        <li>Health data</li>
+        <li>Payment or financial information</li>
+        <li>Advertising identifiers</li>
+        <li>Analytics, tracking, or crash-reporting data</li>
+        <li>Push notification tokens (the daily reminder is on-device only)</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         4. HOW WE USE YOUR INFORMATION
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>How We Use Your Information</h2>
+      <p>We use the information above only to run the app for you:</p>
+      <ul>
+        <li>To run the app and sync your words, tags, notes, and preferences</li>
+        <li>To restore your words across your devices when you sign in</li>
+        <li>To deliver the once-a-day on-device reminder, if you turn it on</li>
+        <li>To keep your account secure</li>
+      </ul>
+      <p>We do not use your information for advertising or profiling.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         5. HOW YOUR DATA IS STORED & SHARED
+         ════════════════════════════════════════════════════════════ -->
+    <section class="divided">
+      <h2>How Your Data Is Stored &amp; Shared</h2>
+      <p>Your content is stored locally on your device and also synced to our
+      cloud database under your account ID, so you don&rsquo;t lose it.</p>
+      <ul>
+        <li>Our cloud database is <strong>Cloud Firestore</strong>, and accounts
+        are managed by <strong>Firebase Authentication</strong> (including
+        anonymous sign-in) — both part of Google Firebase, acting as our data
+        processor.</li>
+        <li>If you choose to sign in, <strong>Apple</strong> and/or
+        <strong>Google</strong> process that sign-in to confirm your identity.</li>
+      </ul>
+      <p>We do not sell your personal data and we do not share it for marketing.
+      You can read the relevant third-party policies here:
+      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple&rsquo;s Privacy Policy</a>
+      and
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&rsquo;s Privacy Policy</a>.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         6. DATA RETENTION
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Data Retention</h2>
+      <p>We keep your data for as long as your account exists — that is, until
+      you delete your account or ask us to delete it. See
+      <a href="#deleting">Deleting Your Account &amp; Data</a> below.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         7. YOUR RIGHTS & CHOICES
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Your Rights &amp; Choices</h2>
+      <p>You are in control of your data. You can:</p>
+      <ul>
+        <li>Access, correct, or export the words, tags, and notes you&rsquo;ve created</li>
+        <li>Delete your account and all associated data</li>
+        <li>Turn the daily reminder off at any time</li>
+        <li>Sign out to return the app to a fresh anonymous state</li>
+      </ul>
+      <p>If you are in the UK or EU, you have rights under UK GDPR (and the EU
+      GDPR), including the rights to access, rectify, erase, restrict, and port
+      your data. You may contact us at any time, and you also have the right to
+      complain to a supervisory authority — in the UK, the
+      <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">Information Commissioner&rsquo;s Office (ICO)</a>.</p>
+      <p>If you are a California resident, you have rights under the CCPA,
+      including the right to know what personal information we hold, to request
+      its deletion, and not to be discriminated against for exercising those
+      rights. We do not sell personal information.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         8. DELETING YOUR ACCOUNT & DATA
+         ════════════════════════════════════════════════════════════ -->
+    <section id="deleting" class="divided">
+      <h2>Deleting Your Account &amp; Data</h2>
+      <p>You can permanently delete your account and everything associated with
+      it in one of two ways:</p>
+
+      <div class="callout">
+        <h3>1. In the app</h3>
+        <p>Go to <strong>Settings → Account → Delete account</strong>. This
+        permanently removes your account and all associated data, both in the
+        cloud and on your device.</p>
+        <h3>2. By email</h3>
+        <p>Email us at
+        <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a> and
+        we will delete your account and data within 30 days.</p>
+      </div>
+
+      <p>Please note: signing out alone does <strong>not</strong> delete your
+      data — it simply returns the app to a fresh anonymous state.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         9. SECURITY
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Security</h2>
+      <p>We use reasonable safeguards to protect your data, including encrypted
+      transport over HTTPS between the app and our cloud database. No method of
+      transmission or storage is ever 100% secure, but we work to keep your
+      information protected.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         10. CHILDREN'S PRIVACY
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Children&rsquo;s Privacy</h2>
+      <p>Gloss Daily is not directed to children under 13, and we do not
+      knowingly collect personal data from them. If you believe a child has
+      provided us with personal information, please contact us and we will
+      delete it.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         11. INTERNATIONAL USERS
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>International Users</h2>
+      <p>Because we use Google Firebase, your data may be processed on Google
+      servers located outside the United Kingdom. Where data is transferred
+      internationally, we rely on appropriate safeguards for such transfers, as
+      required by UK and EU data protection law.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         12. CHANGES TO THIS POLICY
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>If we update this policy, we will change the &ldquo;Last updated&rdquo;
+      date above. For material changes, we will also note them inside the app.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         13. CONTACT
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Contact</h2>
+      <p>This app is operated by Cheuk. If you have any questions about this
+      policy or your data, please get in touch:</p>
+      <ul>
+        <li>Email: <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a></li>
+        <li>Region: United Kingdom</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         FOOTER
+         ════════════════════════════════════════════════════════════ -->
+    <footer>
+      <p>&copy; 2026 Gloss Daily</p>
+      <p><a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a></p>
+    </footer>
+
+  </main>
+</body>
+</html>
