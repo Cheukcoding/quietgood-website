@@ -7,6 +7,10 @@
   <meta name="description" content="Privacy Policy for Gloss Daily, a calm ambient English-vocabulary app for iOS. We collect the minimum to run the app, use no trackers or ads, and never sell your data.">
   <meta name="theme-color" content="#FAF9F5">
 
+  <!-- App icon (same-origin) -->
+  <link rel="icon" type="image/png" href="gloss-icon.png">
+  <link rel="apple-touch-icon" href="gloss-icon.png">
+
   <!-- The ONLY external request: the Google Fonts stylesheet (Fraunces + Inter). -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,6 +73,15 @@
     }
 
     /* ── Header ──────────────────────────────────────────────────────── */
+    .app-icon {
+      display: block;
+      width: 64px;
+      height: 64px;
+      border-radius: 15px;                 /* iOS-style rounded corners */
+      margin-bottom: 24px;
+      box-shadow: 0 6px 16px rgba(28, 27, 24, 0.06); /* very soft, per spec */
+    }
+
     .eyebrow {
       font-family: 'Inter', sans-serif;
       font-weight: 600;
@@ -189,6 +202,7 @@
     @media (max-width: 600px) {
       .page { padding: 48px 22px 56px; }
       body { font-size: 16px; }
+      .app-icon { width: 56px; height: 56px; border-radius: 13px; margin-bottom: 20px; }
       h1 { font-size: 32px; }
       h2 { font-size: 21px; }
       .callout { padding: 20px 20px; }
@@ -213,6 +227,7 @@
          1. HEADER
          ════════════════════════════════════════════════════════════ -->
     <header>
+      <img class="app-icon" src="gloss-icon.png" alt="Gloss Daily app icon" width="64" height="64">
       <p class="eyebrow">Gloss Daily</p>
       <h1>Privacy Policy</h1>
       <p class="updated">Last updated: 27 June 2026</p>
