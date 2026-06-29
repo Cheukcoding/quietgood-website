@@ -121,8 +121,11 @@
     section:first-of-type { margin-top: 40px; } /* after the header rule */
 
     /* A faint divider before some sections for rhythm (added selectively). */
-    section.divided { padding-top: 56px; border-top: 1px solid var(--hairline); }
-    section.divided { margin-top: 56px; }
+    section.divided {
+      margin-top: 56px;
+      padding-top: 56px;
+      border-top: 1px solid var(--hairline);
+    }
 
     h2 {
       font-family: 'Fraunces', Georgia, serif;
@@ -148,6 +151,9 @@
 
     em { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
 
+    /* A quiet meta line (effective date, legal sub-note) — graphite, smaller. */
+    .meta-note { font-size: 15px; color: var(--graphite); }
+
     /* ── Lists: subtle en-dash markers, never heavy bullets ──────────── */
     ul {
       list-style: none;
@@ -170,7 +176,7 @@
     li strong { font-weight: 600; color: var(--ink); }
 
     /* ────────────────────────────────────────────────────────────────
-       QUIET CALLOUT — used ONCE, for the account-deletion steps.
+       QUIET CALLOUT — used sparingly, e.g. the account-deletion steps.
        ──────────────────────────────────────────────────────────────── */
     .callout {
       margin-top: 20px;
@@ -215,6 +221,7 @@
       body { background: #fff; color: #000; }
       a { color: #000; }
       .callout { background: #fff; box-shadow: none; }
+      .app-icon { box-shadow: none; }
       .page { padding: 0; max-width: none; }
     }
   </style>
@@ -224,7 +231,7 @@
   <main class="page">
 
     <!-- ════════════════════════════════════════════════════════════
-         1. HEADER
+         HEADER
          ════════════════════════════════════════════════════════════ -->
     <header>
       <img class="app-icon" src="gloss-icon.png" alt="Gloss Daily app icon" width="64" height="64">
@@ -235,14 +242,40 @@
     </header>
 
     <!-- ════════════════════════════════════════════════════════════
-         2. INTRO
+         1. INTRODUCTION
          ════════════════════════════════════════════════════════════ -->
     <section aria-label="Introduction">
       <p>Gloss Daily is built to be quiet and respectful. We collect only the
       minimum we need to run the app and keep your words safe across your
       devices. We use no trackers, no advertising, and no analytics — and we
       never sell your personal data. This policy explains, in plain English,
-      what we hold and the choices you have.</p>
+      exactly what we hold, why we hold it, the legal grounds we rely on, who
+      processes it on our behalf, and the choices and rights you have.</p>
+
+      <h3>The short version</h3>
+      <ul>
+        <li>The app works straight away using an <em>anonymous</em> account — no name or email required.</li>
+        <li>Signing in is optional; only then do we receive your email and name.</li>
+        <li>Your words, tags, notes, and preferences are stored on your device and synced to our cloud database (Google Firebase).</li>
+        <li>No advertising, no analytics, no tracking, no sale of your data.</li>
+        <li>You can export or delete everything at any time.</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         2. ABOUT THIS POLICY & WHO WE ARE
+         ════════════════════════════════════════════════════════════ -->
+    <section class="divided">
+      <h2>About This Policy &amp; Who We Are</h2>
+      <p>This policy applies to the Gloss Daily mobile app for iOS (the
+      &ldquo;app&rdquo;) and to this privacy page. The person responsible for
+      your personal data — the &ldquo;data controller&rdquo; under UK and EU
+      data protection law — is Cheuk (&ldquo;we&rdquo;, &ldquo;us&rdquo;,
+      &ldquo;our&rdquo;), the operator of Gloss Daily, based in the United
+      Kingdom.</p>
+      <p class="meta-note">If you have any questions about this policy or how we
+      handle your data, you can reach us at any time at
+      <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a>.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
@@ -250,37 +283,46 @@
          ════════════════════════════════════════════════════════════ -->
     <section class="divided">
       <h2>Information We Collect</h2>
+      <p>We only collect what the app needs to work for you. In practice, this
+      falls into a small number of categories.</p>
 
-      <h3>Automatically, when you first open the app</h3>
-      <p>The app creates an <em>anonymous</em> account for you — a random ID — so
-      it works instantly with no sign-up. At this stage we do <strong>not</strong>
-      collect your name or email address.</p>
+      <h3>Account identifier (automatic)</h3>
+      <p>When you first open the app, it creates an <em>anonymous</em> account
+      for you — a randomly generated account ID. This lets the app work
+      instantly with no sign-up. At this stage we do <strong>not</strong>
+      collect your name or email address; the random ID is not linked to your
+      real-world identity.</p>
 
-      <h3>Your content</h3>
-      <p>The things you create in the app:</p>
+      <h3>Content you create</h3>
+      <p>The information you put into the app:</p>
       <ul>
         <li>Words you save and custom words you add yourself</li>
         <li>Tags and short notes you attach to words</li>
         <li>Your preferences, such as reading level and reminder time</li>
       </ul>
+      <p>Because this content is stored as records under your account ID, those
+      records may include basic technical details inherent to storing data, such
+      as the time an item was created or last changed.</p>
 
-      <h3>Only if you choose to sign in</h3>
+      <h3>Sign-in details (only if you choose to sign in)</h3>
       <p>Signing in with <strong>Sign in with Apple</strong> or <strong>Sign in
-      with Google</strong> is optional. If you do, we receive your email address
-      and your name (if the provider shares it). With Sign in with Apple you can
-      use <em>Hide My Email</em>, in which case we only ever see a private Apple
-      relay address rather than your real one.</p>
+      with Google</strong> is optional. It links your data to that identity so
+      your words sync across your devices. Only if you sign in do we receive your
+      email address and your name (if the provider shares it). With Sign in with
+      Apple you can choose <em>Hide My Email</em>, in which case we only ever see
+      a private Apple relay address rather than your real one.</p>
 
       <h3>What we do NOT collect</h3>
       <ul>
         <li>Precise location</li>
         <li>Contacts</li>
         <li>Photos or your photo library</li>
-        <li>Health data</li>
+        <li>Health or fitness data</li>
         <li>Payment or financial information</li>
-        <li>Advertising identifiers</li>
-        <li>Analytics, tracking, or crash-reporting data</li>
+        <li>Advertising identifiers (e.g. the iOS IDFA)</li>
+        <li>Analytics, tracking, or crash-reporting data — we use no such SDKs</li>
         <li>Push notification tokens (the daily reminder is on-device only)</li>
+        <li>Special category data (e.g. data about health, race, religion, or beliefs)</li>
       </ul>
     </section>
 
@@ -289,75 +331,160 @@
          ════════════════════════════════════════════════════════════ -->
     <section>
       <h2>How We Use Your Information</h2>
-      <p>We use the information above only to run the app for you:</p>
+      <p>We use the information above only to provide the app to you:</p>
       <ul>
-        <li>To run the app and sync your words, tags, notes, and preferences</li>
-        <li>To restore your words across your devices when you sign in</li>
+        <li>To create and maintain your account (including the anonymous account)</li>
+        <li>To store and sync your words, tags, notes, and preferences</li>
+        <li>To restore your content across your devices when you sign in</li>
         <li>To deliver the once-a-day on-device reminder, if you turn it on</li>
-        <li>To keep your account secure</li>
+        <li>To keep your account and data secure and to prevent misuse</li>
+        <li>To respond to your requests and support enquiries</li>
       </ul>
-      <p>We do not use your information for advertising or profiling.</p>
+      <p>We do <strong>not</strong> use your information for advertising,
+      profiling, or any form of automated decision-making that produces legal or
+      similarly significant effects.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         5. HOW YOUR DATA IS STORED & SHARED
+         5. LEGAL BASES FOR PROCESSING (UK/EU GDPR)
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Legal Bases for Processing</h2>
+      <p>If you are in the United Kingdom or the European Economic Area, the UK
+      GDPR and EU GDPR require us to have a lawful basis for each use of your
+      data. We rely on the following:</p>
+      <ul>
+        <li><strong>Performance of a contract</strong> (Art. 6(1)(b)) — to
+        provide the app you have asked to use: creating your account, and storing
+        and syncing your words, tags, notes, and preferences across your
+        devices.</li>
+        <li><strong>Consent</strong> (Art. 6(1)(a)) — for optional features you
+        switch on yourself: signing in to link your identity, and enabling the
+        on-device daily reminder (which uses the notification permission you
+        grant). You can withdraw consent at any time by signing out or turning
+        the reminder off.</li>
+        <li><strong>Legitimate interests</strong> (Art. 6(1)(f)) — to keep
+        accounts and data secure, prevent abuse, and maintain and improve the
+        reliability of the app. We balance these interests against your rights
+        and freedoms.</li>
+      </ul>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         6. SERVICE PROVIDERS & SUB-PROCESSORS
          ════════════════════════════════════════════════════════════ -->
     <section class="divided">
-      <h2>How Your Data Is Stored &amp; Shared</h2>
-      <p>Your content is stored locally on your device and also synced to our
-      cloud database under your account ID, so you don&rsquo;t lose it.</p>
+      <h2>Service Providers &amp; Sub-processors</h2>
+      <p>We do not run our own servers. We use a small number of trusted
+      providers who process data on our behalf, under contract and only on our
+      instructions:</p>
       <ul>
-        <li>Our cloud database is <strong>Cloud Firestore</strong>, and accounts
-        are managed by <strong>Firebase Authentication</strong> (including
-        anonymous sign-in) — both part of Google Firebase, acting as our data
-        processor.</li>
-        <li>If you choose to sign in, <strong>Apple</strong> and/or
-        <strong>Google</strong> process that sign-in to confirm your identity.</li>
+        <li><strong>Google Firebase</strong> — our data processor for
+        <em>Firebase Authentication</em> (which manages accounts, including
+        anonymous sign-in) and <em>Cloud Firestore</em> (the cloud database that
+        stores your content under your account ID).</li>
+        <li><strong>Apple</strong> — only if you choose Sign in with Apple, Apple
+        processes that sign-in to verify your identity and, where you use
+        &ldquo;Hide My Email&rdquo;, provides the private relay address.</li>
+        <li><strong>Google Sign-In</strong> — only if you choose to sign in with
+        Google, Google processes that sign-in to verify your identity.</li>
       </ul>
-      <p>We do not sell your personal data and we do not share it for marketing.
-      You can read the relevant third-party policies here:
-      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple&rsquo;s Privacy Policy</a>
+      <p>We do not sell your personal data, and we do not share it with third
+      parties for their own marketing. You can read these providers&rsquo;
+      privacy policies here:
+      <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple&rsquo;s Privacy Policy</a>,
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&rsquo;s Privacy Policy</a>,
       and
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google&rsquo;s Privacy Policy</a>.</p>
+      <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase&rsquo;s Privacy and Security information</a>.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         6. DATA RETENTION
+         7. HOW & WHERE YOUR DATA IS STORED
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>How &amp; Where Your Data Is Stored</h2>
+      <p>Your content is stored in two places, so you don&rsquo;t lose it:</p>
+      <ul>
+        <li><strong>On your device</strong> — locally, so the app works quickly and offline.</li>
+        <li><strong>In our cloud database</strong> — Cloud Firestore (Google
+        Firebase), under your account ID, so your words sync across your
+        devices.</li>
+      </ul>
+      <p>Data is transmitted between the app and our cloud database over
+      encrypted connections (HTTPS/TLS). See
+      <a href="#international">International Users &amp; Transfers</a> for where
+      this data may physically be processed.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         8. COOKIES & SIMILAR TECHNOLOGIES
+         ════════════════════════════════════════════════════════════ -->
+    <section>
+      <h2>Cookies &amp; Similar Technologies</h2>
+      <p>The app does not use tracking cookies or advertising technologies. It
+      stores data on your device only to make the app function (for example,
+      keeping your words available offline) — not to track you.</p>
+      <p>This privacy page itself sets no cookies and runs no analytics or
+      third-party scripts. The only external request it makes is to load the
+      Google Fonts used for its typography.</p>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════════
+         9. DATA RETENTION
          ════════════════════════════════════════════════════════════ -->
     <section>
       <h2>Data Retention</h2>
-      <p>We keep your data for as long as your account exists — that is, until
-      you delete your account or ask us to delete it. See
-      <a href="#deleting">Deleting Your Account &amp; Data</a> below.</p>
+      <p>We keep your data only for as long as your account exists — that is,
+      until you delete your account or ask us to delete it (see
+      <a href="#deleting">Deleting Your Account &amp; Data</a>). When you delete
+      your account, your associated data is removed from our cloud database;
+      residual copies in routine technical backups are overwritten in the normal
+      course of operations within a reasonable period.</p>
+      <p>Signing out does not delete your data — it simply returns the app to a
+      fresh anonymous state.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         7. YOUR RIGHTS & CHOICES
+         10. YOUR RIGHTS & CHOICES
          ════════════════════════════════════════════════════════════ -->
-    <section>
+    <section class="divided">
       <h2>Your Rights &amp; Choices</h2>
-      <p>You are in control of your data. You can:</p>
+      <p>You are in control of your data. Within the app you can access, edit, or
+      export the words, tags, and notes you&rsquo;ve created, turn the daily
+      reminder off, sign out, and delete your account entirely.</p>
+
+      <h3>If you are in the UK or EU</h3>
+      <p>Under the UK GDPR and EU GDPR you have the right to:</p>
       <ul>
-        <li>Access, correct, or export the words, tags, and notes you&rsquo;ve created</li>
-        <li>Delete your account and all associated data</li>
-        <li>Turn the daily reminder off at any time</li>
-        <li>Sign out to return the app to a fresh anonymous state</li>
+        <li><strong>Access</strong> the personal data we hold about you</li>
+        <li><strong>Rectify</strong> data that is inaccurate or incomplete</li>
+        <li><strong>Erase</strong> your data (&ldquo;right to be forgotten&rdquo;)</li>
+        <li><strong>Restrict</strong> or <strong>object</strong> to certain processing</li>
+        <li><strong>Port</strong> your data — receive it in a portable format</li>
+        <li><strong>Withdraw consent</strong> at any time, where we rely on consent</li>
       </ul>
-      <p>If you are in the UK or EU, you have rights under UK GDPR (and the EU
-      GDPR), including the rights to access, rectify, erase, restrict, and port
-      your data. You may contact us at any time, and you also have the right to
-      complain to a supervisory authority — in the UK, the
-      <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">Information Commissioner&rsquo;s Office (ICO)</a>.</p>
-      <p>If you are a California resident, you have rights under the CCPA,
-      including the right to know what personal information we hold, to request
-      its deletion, and not to be discriminated against for exercising those
-      rights. We do not sell personal information.</p>
+      <p>To exercise any of these, email
+      <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a>. We will
+      respond within one month, as required by law, and we will not charge you
+      for a routine request. You also have the right to lodge a complaint with a
+      supervisory authority — in the UK, the
+      <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">Information Commissioner&rsquo;s Office (ICO)</a> —
+      though we&rsquo;d appreciate the chance to help first.</p>
+
+      <h3>If you are in California</h3>
+      <p>Under the CCPA/CPRA you have the right to know what personal information
+      we collect and how we use it, to access and delete it, to correct
+      inaccurate information, and not to be discriminated against for exercising
+      these rights. We do <strong>not</strong> sell your personal information and
+      we do <strong>not</strong> share it for cross-context behavioural
+      advertising. You may use an authorised agent to make a request. To exercise
+      these rights, contact us at the email above.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         8. DELETING YOUR ACCOUNT & DATA
+         11. DELETING YOUR ACCOUNT & DATA
          ════════════════════════════════════════════════════════════ -->
-    <section id="deleting" class="divided">
+    <section id="deleting">
       <h2>Deleting Your Account &amp; Data</h2>
       <p>You can permanently delete your account and everything associated with
       it in one of two ways:</p>
@@ -369,8 +496,8 @@
         cloud and on your device.</p>
         <h3>2. By email</h3>
         <p>Email us at
-        <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a> and
-        we will delete your account and data within 30 days.</p>
+        <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a> and we
+        will delete your account and data within 30 days.</p>
       </div>
 
       <p>Please note: signing out alone does <strong>not</strong> delete your
@@ -378,58 +505,73 @@
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         9. SECURITY
+         12. SECURITY
          ════════════════════════════════════════════════════════════ -->
     <section>
       <h2>Security</h2>
-      <p>We use reasonable safeguards to protect your data, including encrypted
-      transport over HTTPS between the app and our cloud database. No method of
-      transmission or storage is ever 100% secure, but we work to keep your
-      information protected.</p>
+      <p>We use reasonable technical and organisational measures to protect your
+      data. These include encrypted transport over HTTPS/TLS between the app and
+      our cloud database, and access rules in Firebase that restrict each
+      account&rsquo;s data to that account. We rely on Google Firebase&rsquo;s
+      established infrastructure for storage and authentication.</p>
+      <p>No method of transmission or storage is ever 100% secure. If a data
+      breach occurs that affects your personal data, we will notify you and the
+      relevant authorities where required by applicable law.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         10. CHILDREN'S PRIVACY
+         13. CHILDREN'S PRIVACY
          ════════════════════════════════════════════════════════════ -->
     <section>
       <h2>Children&rsquo;s Privacy</h2>
-      <p>Gloss Daily is not directed to children under 13, and we do not
-      knowingly collect personal data from them. If you believe a child has
-      provided us with personal information, please contact us and we will
-      delete it.</p>
+      <p>Gloss Daily is not directed to children under 13 (or the minimum age of
+      digital consent in your country, which can be up to 16 in parts of the EU),
+      and we do not knowingly collect personal data from them. If you believe a
+      child has provided us with personal information, please contact us and we
+      will delete it promptly.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         11. INTERNATIONAL USERS
+         14. INTERNATIONAL USERS & TRANSFERS
          ════════════════════════════════════════════════════════════ -->
-    <section>
-      <h2>International Users</h2>
+    <section id="international">
+      <h2>International Users &amp; Transfers</h2>
       <p>Because we use Google Firebase, your data may be processed on Google
-      servers located outside the United Kingdom. Where data is transferred
-      internationally, we rely on appropriate safeguards for such transfers, as
-      required by UK and EU data protection law.</p>
+      servers located outside the United Kingdom and the European Economic Area.
+      Where data is transferred internationally, we rely on appropriate
+      safeguards required by UK and EU data protection law — such as the UK
+      International Data Transfer Agreement (or Addendum), the European
+      Commission&rsquo;s Standard Contractual Clauses, or an adequacy decision —
+      as implemented by our providers.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         12. CHANGES TO THIS POLICY
+         15. CHANGES TO THIS POLICY
          ════════════════════════════════════════════════════════════ -->
     <section>
       <h2>Changes to This Policy</h2>
       <p>If we update this policy, we will change the &ldquo;Last updated&rdquo;
-      date above. For material changes, we will also note them inside the app.</p>
+      date at the top. For material changes, we will also note them inside the
+      app. We encourage you to review this page from time to time.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
-         13. CONTACT
+         16. CONTACT
          ════════════════════════════════════════════════════════════ -->
-    <section>
+    <section class="divided">
       <h2>Contact</h2>
       <p>This app is operated by Cheuk. If you have any questions about this
-      policy or your data, please get in touch:</p>
+      policy, your data, or to exercise any of your rights, please get in
+      touch:</p>
       <ul>
         <li>Email: <a href="mailto:cheuk.coding@gmail.com">cheuk.coding@gmail.com</a></li>
+        <li>Data controller: Cheuk, operator of Gloss Daily</li>
         <li>Region: United Kingdom</li>
       </ul>
+      <p class="meta-note">UK and EU users also have the right to complain to a
+      data protection authority. In the UK this is the Information
+      Commissioner&rsquo;s Office (ICO),
+      <a href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">ico.org.uk</a>.</p>
     </section>
 
     <!-- ════════════════════════════════════════════════════════════
